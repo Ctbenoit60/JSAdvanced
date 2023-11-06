@@ -6,24 +6,18 @@
 // counter starts from (instead of always starting from 0)
 // c) Modify makeCounter to take another argument incrementBy, which specifies how
 // much each call to counter() should increase the counter value by.
-function makeCounter() {
-  let currentCount = 0;
+function makeCounter(startFrom,incrementBy) {
+  let currentCount = startFrom;
   return function () {
-    currentCount++;
+    currentCount += incrementBy;
     console.log(currentCount);
     return currentCount;
   };
 }
 
-function makeCounter() {
-  let currentCount = 1;
-  return function () {
-    currentCount++;
-    console.log(currentCount);
-    return currentCount;
-  };
-}
 
-let counter1 = makeCounter();
+let counter1 = makeCounter(1,2);
+let counter2 = makeCounter(2,2);
 counter1(); // 1
-counter1(); // 2
+counter2(); // 2
+
