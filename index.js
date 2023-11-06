@@ -7,13 +7,23 @@
 // c) Modify makeCounter to take another argument incrementBy, which specifies how
 // much each call to counter() should increase the counter value by.
 function makeCounter() {
-let currentCount = 0;
-return function() {
-currentCount++;
-console.log(currentCount)
-return currentCount;
-};
+  let currentCount = 0;
+  return function () {
+    currentCount++;
+    console.log(currentCount);
+    return currentCount;
+  };
 }
+
+function makeCounter() {
+  let currentCount = 1;
+  return function () {
+    currentCount++;
+    console.log(currentCount);
+    return currentCount;
+  };
+}
+
 let counter1 = makeCounter();
 counter1(); // 1
 counter1(); // 2
