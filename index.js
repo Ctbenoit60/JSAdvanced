@@ -21,3 +21,4 @@ let counter2 = makeCounter(2,2);
 counter1(); // 1
 counter2(); // 2
 
+// part a: 
