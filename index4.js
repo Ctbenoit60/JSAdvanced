@@ -8,18 +8,24 @@
 // c) Extend one of the above functions to accept a limit argument, which tells it how many
 // numbers to print before stopping.
 
-function printFibonacci() {
+function printFibonacciTimeouts() {
     let a = 0;
     let b = 1;
   
-    const intervalId = setInterval(() => {
+    function printNextFibonacci() {
       console.log(a);
   
       const nextFibonacci = a + b;
       a = b;
       b = nextFibonacci;
-    }, 1000);
+  
+      setTimeout(printNextFibonacci, 1000);
+    }
+  
+   
+    setTimeout(printNextFibonacci, 1000);
+  }
 
-}
-
-// printFibonacci();
+  
+  printFibonacciTimeouts();
+  
