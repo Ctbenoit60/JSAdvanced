@@ -11,12 +11,26 @@
 // length of the period of inactivity instead of hardcoding to 1000ms
 // c) Extend debounce to allow the original debounced function printMe to take an argument
 // msg which is included in the console.log statement.
-function printMe() {
-console.log('printing debounced message')
-}
-printMe = debounce(printMe); //create this debounce function for a)
-//fire off 3 calls to printMe within 300ms - only the LAST one should print, after
-// 1000ms of no calls
-setTimeout( printMe, 100);
-setTimeout( printMe, 200);
-setTimeout( printMe, 300);
+
+function debounce(func, timeout) {
+    let timeoutId;
+  
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+      }, timeout);
+    };
+  }
+  
+  function printMe(msg) {
+    console.log(`Printing debounced message: ${msg}`);
+  }
+  
+  printMe = debounce(printMe, 1000);
+  
+
+  setTimeout(() => printMe('First'), 100);
+  setTimeout(() => printMe('Second'), 200);
+  setTimeout(() => printMe('Third'), 300);
+  
