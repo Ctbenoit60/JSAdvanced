@@ -18,7 +18,9 @@ function wrap() {
     clonedcar.description();
   };
 }
+
 setTimeout(wrap(), 200);
+
 // a) Fix the setTimeout call by wrapping the call to car.description() inside a
 // function
 
@@ -35,5 +37,6 @@ setTimeout(wrap(), 200);
 
 // d) Use bind to fix the description method so that it can be called from within
 // setTimeout without a wrapper function
+// 
 // e) Change another property of the car by creating a clone and overriding it, and test that
 // setTimeout still uses the bound value from d)
