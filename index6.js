@@ -12,7 +12,7 @@ function multiply() {
   }
   
   multiply(5, 5); // prints 25 after 500 milliseconds
-  multiply(2, 3, 4); // prints 24 after 500 milliseconds
+  multiply(2, 3, 4, 5); // prints 24 after 500 milliseconds
   
    // prints 25 after 500 milliseconds
 
@@ -21,5 +21,6 @@ function multiply() {
 
 // b) Use apply to improve your solution so that delayed functions can take any number of
 // parameters
+
 // c) Modify multiply to take 4 parameters and multiply all of them, and test that your
 // delay prototype function still works.
