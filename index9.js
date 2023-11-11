@@ -7,7 +7,23 @@
 // and if the random number is odd, consider this a failure and reject it
 // c) Update the testing code to catch rejected promises and print a different message
 // d) Try to update the then and catch messages to include the random delay value
+
+
 function randomDelay() {
-// your code
-}
-randomDelay().then(() => console.log('There appears to have been a delay.'));
+    const delayTime = Math.floor(Math.random() * 20) + 1; 
+  
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (delayTime % 2 === 0) {
+          resolve(`Delay of ${delayTime} seconds succeeded.`);
+        } else {
+          reject(`Delay of ${delayTime} seconds failed.`);
+        }
+      }, delayTime * 1000); // Convert seconds to milliseconds
+    });
+  }
+  
+  randomDelay()
+    .then(message => console.log(message))
+    .catch(errorMessage => console.error(errorMessage));
+  
