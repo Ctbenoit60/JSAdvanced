@@ -24,6 +24,47 @@ this.timer = setInterval(() => this.display(), 1000);
 }
 const myClock = new DigitalClock('my clock:')
 myClock.start()
+
+
+class PrecisionClock extends DigitalClock {
+    constructor(prefix, precision = 1000) {
+        super(prefix);
+        this.precision = precision;
+    }
+
+    start() {
+        this.display();
+        this.timer = setInterval(() => this.display(), this.precision);
+    }
+}
+
+class AlarmClock extends DigitalClock {
+    constructor(prefix, wakeupTime = '07:00') {
+        super(prefix);
+        this.wakeupTime = wakeupTime;
+    }
+
+    start() {
+        this.display();
+        this.timer = setInterval(() => {
+            const currentTime = new Date();
+            const currentHours = currentTime.getHours();
+            const currentMinutes = currentTime.getMinutes();
+            const currentTimeString = `${currentHours}:${currentMinutes}`;
+
+            if (currentTimeString === this.wakeupTime) {
+                console.log('Wake Up');
+                this.stop();
+            } else {
+                this.display();
+            }
+        }, 1000);
+    }
+}
+
+const myAlarmClock = new AlarmClock('alarm clock:', '08:30');
+myAlarmClock.start();
+
 // a) Create a new class PrecisionClock that inherits from DigitalClock and adds the
 // parameter precision – the number of ms between 'ticks'. This precision parameter
 // should default to 1 second if not supplied.
