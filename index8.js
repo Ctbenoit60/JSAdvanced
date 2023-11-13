@@ -27,16 +27,27 @@ myClock.start()
 
 
 class PrecisionClock extends DigitalClock {
-    constructor(prefix, precision = 1000) {
-        super(prefix);
-        this.precision = precision;
-    }
+    // constructor(prefix, precision = 1000) {
+    //     super(prefix);
+    //     this.precision = precision;
+    // }
 
+    // start() {
+    //     this.display();
+    //     this.timer = setInterval(() => this.display(), this.precision);
+    // }
+    constructor(prefix = "clock", precission = 1000) {
+        super(prefix);
+        this.precission = precission;
+    };
     start() {
-        this.display();
-        this.timer = setInterval(() => this.display(), this.precision);
-    }
+            super.start();
+            this.timer = setInterval(() => this.display(), this.precision)
+            return this
 }
+}
+const precisionClock = new PrecisionClock(null, 2000)
+precisionClock.start().stop()
 
 class AlarmClock extends DigitalClock {
     constructor(prefix, wakeupTime = '07:00') {
@@ -62,7 +73,7 @@ class AlarmClock extends DigitalClock {
     }
 }
 
-const myAlarmClock = new AlarmClock('alarm clock:', '08:30');
+const myAlarmClock = new AlarmClock('alarm clock:', '19:25');
 myAlarmClock.start();
 
 // a) Create a new class PrecisionClock that inherits from DigitalClock and adds the

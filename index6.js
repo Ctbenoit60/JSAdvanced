@@ -1,18 +1,32 @@
 // Use the Function prototype to add a new delay(ms) function to all functions, which can
 // be used to delay the call to that function by ms milliseconds.
-function multiply() {
-    var args = arguments; // arguments object holds all passed arguments
-    setTimeout(function () {
-      var result = 1;
-      for (var i = 0; i < args.length; i++) {
-        result *= args[i];
-      }
-      console.log(result);
-    }, 500);
-  }
+
+// function multiply() {
+//     var args = arguments; // arguments object holds all passed arguments
+//     setTimeout(function () {
+//       var result = 1;
+//       for (var i = 0; i < args.length; i++) {
+//         result *= args[i];
+//       }
+//       console.log(result);
+//     }, 500);
+//   }
   
-  multiply(5, 5); // prints 25 after 500 milliseconds
-  multiply(2, 3, 4, 5); // prints 24 after 500 milliseconds
+function multiply(a, b, c) {
+  console.log( a * b * c );
+  }
+
+  Function.prototype.delay = function(delayMs) {
+    return (...anyNum) => {
+      setTimeout(() => {
+        this(...anyNum)
+      }, delayMs)
+    }
+  }
+
+  multiply.delay(500)(5, 5, 4); // prints 25 after 500 milliseconds
+
+
   
    // prints 25 after 500 milliseconds
 
